@@ -8,9 +8,13 @@ import { Skills } from '@/components/sections/Skills';
 import { Projects } from '@/components/sections/Projects';
 import { Contact } from '@/components/sections/Contact';
 import { Suspense, useEffect, useState } from 'react';
+import { useSmoothScroll } from '@/hooks/use-smooth-scroll';
+import AnimatedSection from '@/components/animations/ScrollTrigger';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
+  // Initialize smooth scrolling
+  const lenisRef = useSmoothScroll();
 
   useEffect(() => {
     // Simulate loading for better UX
@@ -33,7 +37,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" data-scroll-container>
       <Suspense fallback={null}>
         <Scene />
       </Suspense>
@@ -41,10 +45,18 @@ const Index = () => {
         <Navbar />
         <main>
           <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Contact />
+          <AnimatedSection animation="fade-up">
+            <About />
+          </AnimatedSection>
+          <AnimatedSection animation="scale-in" delay={0.2}>
+            <Skills />
+          </AnimatedSection>
+          <AnimatedSection animation="fade-up" threshold={0.1}>
+            <Projects />
+          </AnimatedSection>
+          <AnimatedSection animation="fade-in" delay={0.1}>
+            <Contact />
+          </AnimatedSection>
         </main>
         <Footer />
       </div>
