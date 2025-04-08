@@ -10,8 +10,8 @@ export function useSmoothScroll() {
     lenisRef.current = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
+      orientation: 'vertical', // Changed from 'direction' to 'orientation'
+      gestureOrientation: 'vertical', // Changed from 'gestureDirection' to 'gestureOrientation'
       smooth: true,
       mouseMultiplier: 1,
       smoothTouch: false,
