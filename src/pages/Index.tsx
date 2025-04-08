@@ -1,11 +1,52 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { Scene } from '@/components/three/Scene';
+import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/Footer';
+import { Hero } from '@/components/sections/Hero';
+import { About } from '@/components/sections/About';
+import { Skills } from '@/components/sections/Skills';
+import { Projects } from '@/components/sections/Projects';
+import { Contact } from '@/components/sections/Contact';
+import { Suspense, useEffect, useState } from 'react';
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading for better UX
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="h-screen w-full flex items-center justify-center bg-background">
+        <div className="text-center">
+          <div className="h-16 w-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <h2 className="text-2xl font-bold text-gradient">Loading Portfolio</h2>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-background">
+      <Suspense fallback={null}>
+        <Scene />
+      </Suspense>
+      <div className="content">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
       </div>
     </div>
   );
