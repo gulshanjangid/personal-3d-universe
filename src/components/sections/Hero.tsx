@@ -2,31 +2,21 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { Canvas } from '@react-three/fiber';
+import { Float, PerspectiveCamera, Environment } from '@react-three/drei';
+import Avatar3D from '@/components/three/Avatar3D';
 
 export function Hero() {
   return (
     <section id="home" className="section relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 h-full flex flex-col justify-center">
         <motion.div 
-          className="max-w-3xl mx-auto md:mx-0 text-center md:text-left flex flex-col md:flex-row items-center md:items-start gap-8"
+          className="max-w-5xl mx-auto md:mx-0 text-center md:text-left flex flex-col md:flex-row items-center md:items-start gap-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <motion.div
-            className="mb-6 md:mb-0"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <Avatar className="h-40 w-40 border-4 border-primary/30 shadow-lg shadow-primary/20">
-              <AvatarImage src="/placeholder.svg" alt="Profile" className="object-cover" />
-              <AvatarFallback className="text-4xl font-bold text-primary">YN</AvatarFallback>
-            </Avatar>
-          </motion.div>
-          
-          <div>
+          <div className="flex-1">
             <motion.p 
               className="text-lg text-primary font-medium mb-3"
               initial={{ opacity: 0, y: 20 }}
@@ -69,6 +59,29 @@ export function Hero() {
               <Button size="lg" variant="outline" className="text-lg px-6">Contact Me</Button>
             </motion.div>
           </div>
+          
+          <motion.div
+            className="flex-1 h-[400px] w-full max-w-[400px]"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/10 to-accent/5 backdrop-blur-sm">
+              <Canvas>
+                <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={50} />
+                <ambientLight intensity={0.5} />
+                <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={0.7} castShadow />
+                <Float 
+                  speed={2} 
+                  rotationIntensity={0.2} 
+                  floatIntensity={0.5}
+                >
+                  <Avatar3D position={[0, -1, 0]} />
+                </Float>
+                <Environment preset="city" />
+              </Canvas>
+            </div>
+          </motion.div>
         </motion.div>
         
         <motion.a 

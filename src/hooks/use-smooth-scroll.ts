@@ -13,8 +13,7 @@ export function useSmoothScroll() {
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1, // Changed from 'mouseMultiplier' to 'wheelMultiplier'
-      smoothTouch: false,
+      wheelMultiplier: 1,
       touchMultiplier: 2,
       infinite: false,
     });
