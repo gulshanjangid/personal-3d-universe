@@ -10,7 +10,7 @@ export function Hero() {
         <motion.div 
           className="max-w-5xl mx-auto md:mx-0 text-center md:text-left flex flex-col md:flex-row items-center md:items-start gap-8"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <div className="flex-1">
@@ -28,7 +28,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <span className="text-gradient">Your Name</span>
+              <span className="text-gradient">Gulshan Jangid</span>
             </motion.h1>
             <motion.h2 
               className="text-2xl md:text-4xl font-semibold mb-6 text-foreground/80"
@@ -36,7 +36,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              MERN Stack Developer
+              Full Stack Developer
             </motion.h2>
             <motion.p 
               className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto md:mx-0"
