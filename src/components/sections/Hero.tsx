@@ -65,7 +65,7 @@ export function Hero() {
           >
             <div className="w-full h-full relative rounded-2xl overflow-hidden border-2 border-primary/30 shadow-lg shadow-primary/20">
               <img 
-                src="/public/gulshan.jpeg" 
+                src="public/gulshan.jpeg" 
                 alt="Professional developer" 
                 className="w-full h-full object-cover object-center"
               />
