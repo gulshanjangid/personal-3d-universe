@@ -2,9 +2,6 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
-import { Canvas } from '@react-three/fiber';
-import { Float, PerspectiveCamera, Environment } from '@react-three/drei';
-import Avatar3D from '@/components/three/Avatar3D';
 
 export function Hero() {
   return (
@@ -66,20 +63,13 @@ export function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/10 to-accent/5 backdrop-blur-sm">
-              <Canvas>
-                <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={50} />
-                <ambientLight intensity={0.5} />
-                <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={0.7} castShadow />
-                <Float 
-                  speed={2} 
-                  rotationIntensity={0.2} 
-                  floatIntensity={0.5}
-                >
-                  <Avatar3D position={[0, -1, 0]} />
-                </Float>
-                <Environment preset="city" />
-              </Canvas>
+            <div className="w-full h-full relative rounded-2xl overflow-hidden border-2 border-primary/30 shadow-lg shadow-primary/20">
+              <img 
+                src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952" 
+                alt="Professional developer" 
+                className="w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
             </div>
           </motion.div>
         </motion.div>

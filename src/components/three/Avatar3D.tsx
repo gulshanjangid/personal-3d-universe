@@ -18,7 +18,7 @@ export function Avatar3D({ position = [0, 0, 0] as [number, number, number], sca
   });
 
   return (
-    <group ref={group} position={position as Vector3} scale={isMobile ? scale * 0.7 : scale}>
+    <group ref={group} position={new Vector3(...position)} scale={isMobile ? scale * 0.7 : scale}>
       {/* Character body */}
       <mesh castShadow position={[0, -0.8, 0]}>
         <capsuleGeometry args={[0.5, 1.2, 8, 16]} />
