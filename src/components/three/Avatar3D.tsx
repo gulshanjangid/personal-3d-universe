@@ -2,10 +2,10 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF, Environment, ContactShadows, Float } from '@react-three/drei';
-import { Group } from 'three';
+import { Group, Vector3 } from 'three';
 import { useIsMobile } from '@/hooks/use-mobile';
 
-export function Avatar3D({ position = [0, 0, 0], scale = 2.5 }) {
+export function Avatar3D({ position = [0, 0, 0] as [number, number, number], scale = 2.5 }) {
   const group = useRef<Group>(null);
   const isMobile = useIsMobile();
   
@@ -18,7 +18,7 @@ export function Avatar3D({ position = [0, 0, 0], scale = 2.5 }) {
   });
 
   return (
-    <group ref={group} position={position} scale={isMobile ? scale * 0.7 : scale}>
+    <group ref={group} position={position as Vector3} scale={isMobile ? scale * 0.7 : scale}>
       {/* Character body */}
       <mesh castShadow position={[0, -0.8, 0]}>
         <capsuleGeometry args={[0.5, 1.2, 8, 16]} />
@@ -60,7 +60,11 @@ export function Avatar3D({ position = [0, 0, 0], scale = 2.5 }) {
         {/* Screen with glowing effect */}
         <mesh position={[0, 0.25, -0.23]}>
           <planeGeometry args={[0.7, 0.4]} />
-          <meshBasicMaterial color="#61DAFB" emissive="#61DAFB" emissiveIntensity={0.5} />
+          <meshStandardMaterial 
+            color="#61DAFB" 
+            emissive="#61DAFB" 
+            emissiveIntensity={0.5} 
+          />
         </mesh>
       </group>
 
