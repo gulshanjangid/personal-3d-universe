@@ -12,8 +12,8 @@ export function useSmoothScroll() {
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
-      smoothWheel: true, // Changed from 'smooth' to 'smoothWheel'
-      mouseMultiplier: 1,
+      smoothWheel: true,
+      wheelMultiplier: 1, // Changed from 'mouseMultiplier' to 'wheelMultiplier'
       smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,
